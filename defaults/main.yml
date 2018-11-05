@@ -1,6 +1,5 @@
 ---
-operator_namespace: myproject
-project_display_name: Spark-operator namespace
-project_desc: Example project for spark-operator
-
-ephemeral: true
+image: quay.io/radanalyticsio/spark-operator:latest-released
+namespace: myproject
+crd: "false"
+memory: 512
