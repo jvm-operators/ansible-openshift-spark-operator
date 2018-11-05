@@ -1,0 +1,8 @@
+---
+project_name: myproject
+project_display_name: Spark-operator namespace
+project_desc: Example project for spark-operator
+
+openshift_cli: oc
+
+ephemeral: true

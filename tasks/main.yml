@@ -1,0 +1,11 @@
+---
+## Deploy Spark Operator
+
+- name: Prepare operator manifest
+  template:
+    src: operator.j2
+    dest: operator.yaml
+- name: Deploy the operator from the manifest
+  k8s_raw:
+    state: present
+    src: operator.yaml
