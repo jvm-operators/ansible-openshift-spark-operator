@@ -1,11 +1,18 @@
 ---
 ## Deploy Spark Operator
 
+- name: Install openshift python lib
+  pip:
+    name: openshift
+    extra_args: --user
+
 - name: Prepare operator manifest
   template:
     src: operator.j2
     dest: operator.yaml
+
 - name: Deploy the operator from the manifest
   k8s_raw:
     state: present
     src: operator.yaml
+    kubeconfig: ~/.kube/config
