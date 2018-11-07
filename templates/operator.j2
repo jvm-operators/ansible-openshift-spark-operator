@@ -54,7 +54,7 @@ spec:
         - name: WATCHED_NAMESPACE
           value: {{ namespace }}
         - name: CRD
-          value: "{{ crd }}"
+          value: "{{ crd|lower }}"
         - name: COLORS
           value: "true"
         resources:

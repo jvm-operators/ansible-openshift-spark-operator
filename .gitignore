@@ -1,2 +1,7 @@
 *.retry
 operator.yaml
+prometheus-operator.yaml
+example-cr.yaml
+example.yaml
+example-metrics-cr.yaml
+example-metrics.yaml

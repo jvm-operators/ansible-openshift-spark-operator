@@ -3,4 +3,6 @@
     - role: ../../ansible-openshift-spark-operator
       namespace: myproject
       image: quay.io/radanalyticsio/spark-operator:latest-released
-      crd: "false"
+      crd: false
+      prometheus: true
+      runExampleCluster: true

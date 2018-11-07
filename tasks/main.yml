@@ -15,4 +15,35 @@
   k8s_raw:
     state: present
     src: operator.yaml
-    kubeconfig: ~/.kube/config
+
+- block:
+    - name: Prepare Prometheus operator manifest
+      template:
+        src: prometheus-operator.j2
+        dest: prometheus-operator.yaml
+
+    - name: Prometheus and metrics
+      k8s_raw:
+        username: system:admin
+        state: present
+        src: prometheus-operator.yaml
+
+  when: prometheus
+
+- block:
+    - name: Set correct file path for example cluster
+      set_fact:
+        example_file: "example{% if prometheus %}-metrics{% endif %}{% if crd %}-cr{% endif %}"
+    - name: Print the path
+      debug:
+        msg: "We will be using '{{ example_file }}.j2' template."
+    - name: Template for example cluster
+      template:
+        src: "{{ example_file }}.j2"
+        dest: "{{ example_file }}.yaml"
+    - name: Deploy example cluster
+      k8s_raw:
+        state: present
+        src: "{{ example-file }}.yaml"
+
+  when: runExampleCluster

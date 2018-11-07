@@ -28,7 +28,7 @@ or with your own settings:
     - role: jiri_kremser.spark_operator
       namespace: myproject
       image: quay.io/radanalyticsio/spark-operator:latest-released
-      crd: "false"
+      crd: false
 ```
 
 ```bash
