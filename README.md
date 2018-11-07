@@ -34,3 +34,8 @@ or with your own settings:
 ```bash
 ansible-playbook example-playbook.yaml
 ```
+
+After running the playbook, the operator should be up and running and you can continue with creating either config maps
+or custom resources for your Spark clusters or Spark applications. For more details please consult the 
+[readme](https://github.com/radanalyticsio/spark-operator/blob/master/README.md) of spark-operator 
+(you can skip the operator deployment step) or check the [examples](https://github.com/radanalyticsio/spark-operator/tree/master/examples).
