@@ -3,3 +3,4 @@ image: quay.io/radanalyticsio/spark-operator:latest-released
 namespace: myproject
 crd: "false"
 memory: 512
+prometheus: "false"
