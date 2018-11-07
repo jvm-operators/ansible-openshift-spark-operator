@@ -1,3 +1,6 @@
 - hosts: all
   roles:
-    - ../../ansible-openshift-spark-operator
+    - role: ../../ansible-openshift-spark-operator
+      namespace: myproject
+      image: quay.io/radanalyticsio/spark-operator:latest-released
+      crd: "false"
