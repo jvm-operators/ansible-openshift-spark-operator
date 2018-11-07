@@ -5,7 +5,7 @@ allow_duplicates: true
 galaxy_info:
   author: Jiri Kremser
   role_name: spark-operator
-  description: Spark Operator for OpenShift
+  description: Spark Operator for Kubernetes and OpenShift
   company: "Red Hat"
   license: "Apache v2.0"
   min_ansible_version: 2.5
