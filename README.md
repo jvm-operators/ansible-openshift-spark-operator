@@ -1,4 +1,7 @@
 ## Info
+[![Build status](https://travis-ci.org/jvm-operators/ansible-openshift-spark-operator.svg?branch=master)](https://travis-ci.org/jvm-operators/ansible-openshift-spark-operator)
+[![Ansible Downloads](https://img.shields.io/ansible/role/d/32399.svg)](https://galaxy.ansible.com/jiri_kremser/spark_operator)
+
 
 Ansible role for deploying [spark-operator](https://github.com/radanalyticsio/spark-operator). 
 
