@@ -20,7 +20,7 @@ And then use it in your playbook (`example-playbook.yaml`):
     - role: jiri_kremser.spark_operator
 ```
 
-or with your own settings:
+or with your own settings (these are the default settings):
 
 ```yaml
 - hosts: localhost
@@ -29,6 +29,8 @@ or with your own settings:
       namespace: myproject
       image: quay.io/radanalyticsio/spark-operator:latest-released
       crd: false
+      prometheus: false
+      runExampleCluster: false
 ```
 
 ```bash

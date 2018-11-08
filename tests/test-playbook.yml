@@ -4,5 +4,5 @@
       namespace: myproject
       image: quay.io/radanalyticsio/spark-operator:latest-released
       crd: false
-      prometheus: true
-      runExampleCluster: true
+      prometheus: false
+      runExampleCluster: false
