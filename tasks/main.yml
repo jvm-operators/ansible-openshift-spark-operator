@@ -63,7 +63,4 @@
         state: present
         src: "{{ example_file }}.yaml"
 
-    # - name: Expose Prometheus service
-    #   k8s_raw: todo
-
   when: runExampleCluster
