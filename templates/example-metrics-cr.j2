@@ -1,12 +1,10 @@
-apiVersion: v1
-kind: ConfigMap
+apiVersion: radanalytics.io/v1
+kind: sparkcluster
 metadata:
-  name: spark-cluster-with-metrics
-  labels:
-    radanalytics.io/kind: sparkcluster
-data:
-  config: |-
-    metrics: true
+  name: spark-cluster-cr-with-metrics
+  namespace: {{ namespace }}
+spec:
+  metrics: true
 ---
 apiVersion: v1
 kind: Service

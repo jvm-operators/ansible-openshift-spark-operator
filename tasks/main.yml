@@ -17,16 +17,30 @@
     src: operator.yaml
 
 - block:
+    - name: Ensure we are system:admin (1)
+      shell: oc whoami | grep "system:admin" || kubectl config current-context | grep "system:admin"
+      ignore_errors: yes
+      changed_when: false
+      register: whoami_result
+
+    - name: Ensure we are system:admin (2)
+      fail:
+        msg: In order to be able to deploy the Prometheus, we need to be logged in as system:admin. Do that using oc or kubectl.
+      when: whoami_result.rc != 0
+
     - name: Prepare Prometheus operator manifest
       template:
         src: prometheus-operator.j2
         dest: prometheus-operator.yaml
 
-    - name: Prometheus and metrics
+    - name: Deploy Prometheus operator
       k8s_raw:
-        username: system:admin
         state: present
         src: prometheus-operator.yaml
+
+    - name: Wait 10 seconds for the CRDs
+      wait_for: timeout=10
+      when: runExampleCluster
 
   when: prometheus
 
@@ -34,16 +48,22 @@
     - name: Set correct file path for example cluster
       set_fact:
         example_file: "example{% if prometheus %}-metrics{% endif %}{% if crd %}-cr{% endif %}"
+
     - name: Print the path
       debug:
         msg: "We will be using '{{ example_file }}.j2' template."
+
     - name: Template for example cluster
       template:
         src: "{{ example_file }}.j2"
         dest: "{{ example_file }}.yaml"
+
     - name: Deploy example cluster
       k8s_raw:
         state: present
-        src: "{{ example-file }}.yaml"
+        src: "{{ example_file }}.yaml"
+
+    # - name: Expose Prometheus service
+    #   k8s_raw: todo
 
   when: runExampleCluster

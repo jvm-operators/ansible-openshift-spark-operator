@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: spark-cluster-with-metrics
+  namespace: {{ namespace }}
   labels:
     radanalytics.io/kind: sparkcluster
 data:
@@ -12,6 +13,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: masters-metrics
+  namespace: {{ namespace }}
   labels:
     radanalytics.io/metrics: masters
 spec:
@@ -28,6 +30,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: workers-metrics
+  namespace: {{ namespace }}
   labels:
     radanalytics.io/metrics: workers
 spec:
@@ -44,6 +47,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: prometheus
+  namespace: {{ namespace }}
 ---
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRole
@@ -81,6 +85,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: workers-monitor
+  namespace: {{ namespace }}
   labels:
     team: spark-cluster-with-metrics
 spec:
@@ -94,6 +99,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: masters-monitor
+  namespace: {{ namespace }}
   labels:
     team: spark-cluster-with-metrics
 spec:
@@ -107,6 +113,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
 metadata:
   name: prometheus
+  namespace: {{ namespace }}
 spec:
   serviceMonitorSelector:
     matchLabels:
