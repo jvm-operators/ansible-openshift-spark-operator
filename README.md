@@ -37,6 +37,12 @@ or with your own settings (these are the default settings):
 ansible-playbook example-playbook.yaml
 ```
 
+or with this one liner:
+
+```bash
+ansible localhost -m include_role -a name=jiri_kremser.spark_operator
+```
+
 After running the playbook, the operator should be up and running and you can continue with creating either config maps
 or custom resources for your Spark clusters or Spark applications. For more details please consult the 
 [readme](https://github.com/radanalyticsio/spark-operator/blob/master/README.md) of spark-operator 
