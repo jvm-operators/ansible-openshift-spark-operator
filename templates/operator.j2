@@ -51,7 +51,7 @@ spec:
       - name: spark-operator
         image: {{ image }}
         env:
-        - name: WATCHED_NAMESPACE
+        - name: WATCH_NAMESPACE
           value: {{ namespace }}
         - name: CRD
           value: "{{ crd|lower }}"
