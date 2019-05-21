@@ -47,3 +47,10 @@ After running the playbook, the operator should be up and running and you can co
 or custom resources for your Spark clusters or Spark applications. For more details please consult the 
 [readme](https://github.com/radanalyticsio/spark-operator/blob/master/README.md) of spark-operator 
 (you can skip the operator deployment step) or check the [examples](https://github.com/radanalyticsio/spark-operator/tree/master/examples).
+
+
+### Try locally
+
+```bash
+ansible-playbook -i tests/inventory tests/test-playbook.yml
+```
